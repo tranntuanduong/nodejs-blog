@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "beautiful": "prettier --single-quote --trailing-comma all --write src/**/*.{js,css,json}",
     "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,10 +20,16 @@
   "homepage": "https://github.com/tranntuanduong/nodejs-blog#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.2"
+    "express-handlebars": "^5.3.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.13.3",
+    "mongoose-slug-generator": "^1.0.4"
   },
   "devDependencies": {
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
   }
 }

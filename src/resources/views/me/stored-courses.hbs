@@ -1,6 +1,6 @@
 <form class="mt-4" method="POST" action="/courses/handle-form-actions">
    <div>
-        <h3>Khóa học của tôi</h3>
+        <h3>Khóa học của tôi!</h3>
         <a href="/me/trash/courses">Thùng rác</a> ({{deletedCount}})
    </div>
 
@@ -19,8 +19,14 @@
                 <th><input type="checkbox" id="checkbox-all"></th>
                 <th scope="col" class="text-center">#</th>
                 <th scope="col" class="text-center">Thumb</th>
-                <th scope="col" class="text-center">Name</th>
-                <th scope="col" class="text-center">Thời gian tạo</th>
+                <th scope="col" class="text-center">
+                    Tên khóa học
+                    {{{sortable 'name' _sort}}}
+                </th>
+                <th scope="col" class="text-center">
+                    Thời gian tạo
+                     {{{sortable 'createdAt' _sort}}}
+                </th>
                 <th scope="col" class="text-center">Hành động</th>
             </tr>
         </thead>
@@ -30,7 +36,7 @@
                     <td>
                         <input type="checkbox" value="{{this._id}}" name="courseIds[]">
                     </td>
-                    <td scope="row">{{sum @index 1}}</td>
+                    <td scope="row">{{this._id}}</td>
                     <td><img class="thumb-img" src="{{this.image}}" alt=""></td>
                     <td>{{this.name}}</td>
                     <td>{{this.createdAt}}</td> 
@@ -111,6 +117,7 @@
         });
 
         // Re-render checkall submit btn
+        // dung javascrip thi phải dùng functionjs, jquery thì phải dùng func jquery
         function renderCheckAllSubmitBtn() {
             var checkedCount = $('input[name="courseIds[]"]:checked').length;
             if (checkedCount > 0) {
